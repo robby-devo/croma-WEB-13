@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ea5026738a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Croma.css">
+</head>
+<body>
+    <div id="Nav_div"></div>
+    <div id="Pay">
+        <form id="form1">
+            <i class="fab fa-paypal py"></i> <i class="fab fa-cc-visa py" ></i> <i class="fab fa-google-pay py"></i><i class="fab fa-apple-pay py"></i><i class="fab fa-amazon-pay py"></i><i class="fab fa-cc-paypal py"></i>
+            <br><br><label for="">CARD NUMBER</label><br>
+            <input type="number" id="card" placeholder="Valid Card Number"><br><br>
+            <label>EXPIRATION DATE</label><br>
+            <input type="text" placeholder="MM/YY" id="date"><br><br>
+            <label>CVV CODE</label><br>
+            <input type="number" id="cvv" placeholder="CVV"><br><br>
+            <label for="">CARD OWNER</label><br><input type="text" placeholder="CARD OWNER NAME" id="owner"><br><br>
+           <div id="div-su"><button id="submit12">PAY</button> <div id="pro4"></div></div>
+        </form>
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from './components/Navbar.js';
+    Nav_div.innerHTML=navbar();
+   
+     document.getElementById('form1').addEventListener('submit',function(e){
+        e.preventDefault();
+        let pro=document.getElementById("submit12");
+           pro.textContent="Proccesing"
+          let div=document.getElementById('pro4')
+          div.style.display="block"
+        setTimeout(()=>{
+         
+        var ca=document.getElementById('card').value;
+        var da=document.getElementById('date').value;
+        var cv=document.getElementById('cvv').value;
+        var ow=document.getElementById('owner').value;
+        if(ca.length!==16)
+        {
+            alert("Invalid Card Number")
+          let div=document.getElementById('pro4')
+          div.style.display="none"
+        }
+        else if(da.length<4)
+        {
+            alert("Invalid Date ")
+          let div=document.getElementById('pro4')
+          div.style.display="none"
+        }
+        else if(cv.length!==3)
+        {
+            alert("Invalid CVV Number")
+          let div=document.getElementById('pro4')
+          div.style.display="none"
+        }
+        else if(ow.length<4)
+        {
+            alert("Invalid Card Name")
+          let div=document.getElementById('pro4')
+          div.style.display="none"
+        }
+        else
+        {
+            alert("Payment Successful")
+          let div=document.getElementById('pro4')
+          div.style.display="none"
+          location.href="Cromaphones.html"
+        }},1000)
+    })
+</script>
