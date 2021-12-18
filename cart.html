@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     <title>Croma | Cart</title>
     <link rel="stylesheet" href="nav.css" />
     <link
@@ -14,8 +17,11 @@
       referrerpolicy="no-referrer"
     />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <style>
+      body{
+        font-family: 'Montserrat', sans-serif;
+      }
 
       /* -----------firstBox-------------- */
       #firstBox{
@@ -84,6 +90,8 @@
         border: 1px solid #2e2e2e;
         border-radius: 5px;
         vertical-align: top;
+        font-size: 16px;
+        padding: 10px;
       }
 
       /* ---------------Coupon Box---------   */
@@ -141,7 +149,7 @@
         margin-left: 58%;
       }
       .totalPrice{
-        margin-left: 30%;
+        margin-left: 24%;
         font-size: 20px;
       }
 
@@ -150,13 +158,33 @@
         height: auto;
         width: 60%;
         display: inline-block;
+        padding: 10px;
       }
 
 
       #lastBtn{
         margin-left: 5%;
+        vertical-align: top;
       }
-      
+      .icon{
+        font-size: 16px;
+        
+      }
+
+
+      .lastSmall{
+        font-size: 14px;
+      }
+
+
+      #pinCode{
+        color: #00ffff;
+        font-weight: bold;
+      }
+      #changePin{
+        color: #00ffff;
+        margin-left: 5px;
+      }
     </style>
   </head>
   <body>
@@ -227,7 +255,7 @@
 
     <div id="firstBox">
       <div id="one">
-        <span id="note">Your Cart (1 item) 5999</span>
+        <span id="note">Your Cart (<span id="cartItems">1</span> item) <span class="cartPrice"> 5999</span></span>
       </div>
       <div id="checkoutBtnOne">
         <button class="checkout">CHECKOUT</button>
@@ -243,9 +271,9 @@
 
     <!-- -----------Delivery box------------- -->
     <div id="delivery">
-      <span>Delivery Options for 482008</span> <a href="">Change</a>
-      <br>
-      <input type="radio" id=""><ion-icon name="file-tray-stacked-outline"></ion-icon>Standard Delivery
+      <span>Delivery Options for &nbsp; <span id="pinCode"> 482008</span> <a href="" id="changePin">Change</a>
+      <br><br>
+      <input type="radio" id=""><ion-icon class="icon" name="file-tray-stacked-outline"></ion-icon><b>Standard Delivery</b>
     </div>
 
    <!------------ Coupon code Box------------->
@@ -262,16 +290,16 @@
     <span id="pTxt">Payment Details</span>
     <br> <br>
     <div id="last">
-    <span class="nTxt">Item Total</span> <span class="totalPrice" id="tp">1499</span>
+    <span class="nTxt">Item Total</span> <span class="totalPrice" class="cartPrice" id="tp">1499</span>
     <br> <br>
     <span class="nTxt">Delivery Cost at 482002</span> <span class="totalPrice">FREE</span>
     <hr>
-    <span class="nTxt">Item Total</span> <span class="totalPrice" id="fp">1499</span>
+    <span class="nTxt"><b>Total Price</b></span> <span class="totalPrice" class="cartPrice" id="fp">1499</span>
    </div>
 <br>
    <div id="checks">
-     <input type="checkbox" id=""><ion-icon name="gift-outline"></ion-icon>Is This a Gift? <br>
-     <input type="checkbox" id=""><ion-icon name="heart-circle-outline"></ion-icon>Towards donation for the underprivilaged
+     <input type="checkbox" id=""><ion-icon class="icon" name="gift-outline"></ion-icon><span class="lastSmall"> Is This a Gift?</span> <br>
+     <input type="checkbox" id=""><ion-icon class="icon" name="heart-circle-outline"></ion-icon><span class="lastSmall">Towards donation for the underprivilaged</span>
    </div>
    <button id="lastBtn" class="checkout">
      CHECKOUT 
