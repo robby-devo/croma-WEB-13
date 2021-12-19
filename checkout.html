@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/ea5026738a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Croma.css">
+</head>
+<body>
+    <div id="Nav_Bar"></div>
+    <div id="total"></div>
+    <div id="check_main">
+        <div id="seeleft"></div>
+        <div id="seeright">
+            <div>
+                <h2>Payment Details</h2>
+                <div class="ino">
+                    <div>item total</div>
+                    <div id="totaL"></div>
+                </div>
+                <div class="ino">
+                    <div>Delivery cost at 110088</div>
+                    <div>Free</div>
+                </div>
+                <div class="ino">
+                    <div>Total Price</div>
+                    <div id="total2"></div>
+                </div>
+                <button id="checkout">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="module">
+    import navbar from './components/Navbar.js'
+    Nav_Bar.innerHTML=navbar()
+  
+    var items=JSON.parse(localStorage.getItem('Tocart'))
+    console.log(items)
+    var total=items.reduce((a,b)=>{
+        return a+Number(b.price1);
+    },0)
+   let to= document.getElementById('totaL')
+   to.innerHTML="₹"+total;
+   let too= document.getElementById('total2')
+   too.innerHTML="₹"+total
+   
+   window.addEventListener('load',()=>{
+    var items=JSON.parse(localStorage.getItem('Tocart'))  
+    display(items)
+   })
+   function display(items)
+   {
+       document.getElementById('seeleft').innerHTML=null
+       items.map((item,i)=>{
+        let div=document.createElement('div')
+        let div2=document.createElement('div')
+        let div3=document.createElement('div')
+        let dl=document.createElement('div')
+        dl.innerHTML=`<i class="far fa-trash-alt" id="dele"></i>`
+        console.log(i)
+        div2.style.backgroundImage=`url(${item.img1})`
+         div3.innerHTML=`<h3>${item.name}</h3><p>Product Id: 245383 QTY:1</p><span1>₹${item.price1}</span1><span2>₹${item.price2}</span2>`
+         div.append(div2,div3,dl)
+         let app=document.getElementById('seeleft')
+         app.append(div)
+         localStorage.setItem('ToTal',total)
+        let upper=document.getElementById('total')
+        upper.innerHTML=`<h1>Your Cart(${i+1}-items)<span5>₹${total}</span5></h1>`
+        dl.addEventListener('click',()=>{
+            makedelete(i);
+        })
+       })
+   }
+   function makedelete(i){
+     items.splice(i,1)
+     display(items)
+     localStorage.setItem('Tocart',JSON.stringify(items))
+     location.reload()
+   }
+   document.getElementById('checkout').addEventListener('click',()=>{
+       location.href='CromaPay.html'
+   })
+
+</script>
